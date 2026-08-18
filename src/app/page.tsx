@@ -53,70 +53,274 @@ export function ThemeToggle() {
 }
 
 export default function Home() {
+  const [isDark, setIsDark] = useState(() => {
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("theme") === "dark";
+    }
+    return false;
+  });
+
+  useEffect(() => {
+    const html = document.documentElement;
+    if (isDark) {
+      html.classList.add("dark");
+    } else {
+      html.classList.remove("dark");
+    }
+  }, [isDark]);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
+    <div className="flex flex-col min-h-screen bg-zinc-50 dark:bg-black font-sans">
       <ThemeToggle />
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+
+      {/* Hero Section */}
+      <header className="bg-gradient-to-b from-zinc-50 via-white to-zinc-100 dark:from-zinc-900 dark:via-zinc-950 dark:to-zinc-800 py-20 px-6 text-center">
+        <h1 className="text-4xl md:text-5xl font-bold text-zinc-900 dark:text-zinc-100 mb-4">
+          Global Community for Expatriates
+        </h1>
+        <p className="text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
+          Connect, find jobs, housing, and services worldwide. Join 100,000+ expatriates building international careers and lives.
+        </p>
+        <div className="mt-6 flex gap-4 justify-center sm:flex-col">
+          <a
+            href="/jobs"
+            className="bg-zinc-600 text-white px-8 py-3 rounded-full font-medium text-lg hover:bg-zinc-700 dark:hover:bg-zinc-400 transition-colors"
+          >
+            Find Jobs
+          </a>
+          <a
+            href="/housing"
+            className="border-2 border-zinc-600 text-zinc-600 px-8 py-3 rounded-full font-medium text-lg hover:bg-zinc-50 dark:hover:bg-zinc-950 dark:text-zinc-300 transition-colors"
+          >
+            Housing
+          </a>
+        </div>
+      </header>
+
+      {/* Jobs Section */}
+      <section className="py-16 px-6">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl font-bold text-zinc-900 dark:text-zinc-100 mb-8 text-center">
+            Featured Jobs
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <article className="bg-white dark:bg-zinc-800 rounded-xl p-6 hover:shadow-lg transition-shadow">
+              <h3 className="text-xl font-medium text-zinc-900 dark:text-zinc-100 mb-2">Senior Web Developer</h3>
+              <p className="text-zinc-500 text-sm mb-4">Dubai, UAE - Full Time</p>
+              <ul className="text-zinc-400 text-xs space-y-1">
+                <li>30+ days ago</li>
+                <li>35-50K AED/month</li>
+                <li>Visa sponsorship</li>
+              </ul>
+            </article>
+            <article className="bg-white dark:bg-zinc-800 rounded-xl p-6 hover:shadow-lg transition-shadow">
+              <h3 className="text-xl font-medium text-zinc-900 dark:text-zinc-100 mb-2">English Teacher</h3>
+              <p className="text-zinc-500 text-sm mb-4">Bangkok, Thailand - Contract</p>
+              <ul className="text-zinc-400 text-xs space-y-1">
+                <li>45 days ago</li>
+                <li>30-40K THB/month</li>
+                <li>Housing included</li>
+              </ul>
+            </article>
+            <article className="bg-white dark:bg-zinc-800 rounded-xl p-6 hover:shadow-lg transition-shadow">
+              <h3 className="text-xl font-medium text-zinc-900 dark:text-zinc-100 mb-2">Account Manager</h3>
+              <p className="text-zinc-500 text-sm mb-4">London, UK - Permanent</p>
+              <ul className="text-zinc-400 text-xs space-y-1">
+                <li>15 days ago</li>
+                <li>45-60K GBP/year</li>
+                <li>Relocation package</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      {/* Housing Section */}
+      <section className="py-16 px-6 bg-white dark:bg-zinc-900">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl font-bold text-zinc-900 dark:text-zinc-100 mb-8 text-center">
+            Housing & Accommodation
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <article className="bg-zinc-100 dark:bg-zinc-800 rounded-xl p-6 hover:shadow-lg transition-shadow">
+              <h3 className="text-xl font-medium text-zinc-900 dark:text-zinc-100 mb-4">Modern Apartment</h3>
+              <p className="text-zinc-500 text-sm mb-4">Riyadh, Saudi Arabia</p>
+              <ul className="text-zinc-400 text-xs space-y-2">
+                <li>2 bedrooms, 2 bathrooms</li>
+                <li>Furnished</li>
+                <li>Pool access</li>
+                <li>15K SAR/month</li>
+              </ul>
+              <a
+                href="/housing/detail"
+                className="mt-4 inline-block text-zinc-600 dark:text-zinc-400 font-medium hover:underline"
+              >
+                View details
+              </a>
+            </article>
+            <article className="bg-zinc-100 dark:bg-zinc-800 rounded-xl p-6 hover:shadow-lg transition-shadow">
+              <h3 className="text-xl font-medium text-zinc-900 dark:text-zinc-100 mb-4">Furnished Villa</h3>
+              <p className="text-zinc-500 text-sm mb-4">Dubai, UAE</p>
+              <ul className="text-zinc-400 text-xs space-y-2">
+                <li>3 bedrooms, 3 bathrooms</li>
+                <li>Private pool</li>
+                <li>Gym access</li>
+                <li>25K AED/month</li>
+              </ul>
+              <a
+                href="/housing/detail"
+                className="mt-4 inline-block text-zinc-600 dark:text-zinc-400 font-medium hover:underline"
+              >
+                View details
+              </a>
+            </article>
+            <article className="bg-zinc-100 dark:bg-zinc-800 rounded-xl p-6 hover:shadow-lg transition-shadow">
+              <h3 className="text-xl font-medium text-zinc-900 dark:text-zinc-100 mb-4">Studio in City Center</h3>
+              <p className="text-zinc-500 text-sm mb-4">Bangkok, Thailand</p>
+              <ul className="text-zinc-400 text-xs space-y-2">
+                <li>1 bedroom, 1 bathroom</li>
+                <li>Monthly utilities included</li>
+                <li>BTS access</li>
+                <li>12K THB/month</li>
+              </ul>
+              <a
+                href="/housing/detail"
+                className="mt-4 inline-block text-zinc-600 dark:text-zinc-400 font-medium hover:underline"
+              >
+                View details
+              </a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      {/* Items for Sale Section */}
+      <section className="py-16 px-6">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl font-bold text-zinc-900 dark:text-zinc-100 mb-8 text-center">
+            Items for Sale
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="bg-white dark:bg-zinc-800 rounded-lg p-4 hover:shadow-lg transition-shadow">
+              <img
+                src="/next.svg"
+                alt="Item"
+                className="h-24 w-24 object-cover mb-4 rounded"
+              />
+              <h3 className="text-sm font-medium text-zinc-900 dark:text-zinc-100">iPhone 15 Pro</h3>
+              <p className="text-zinc-500 text-xs">Dubai, UAE</p>
+              <p className="font-bold text-zinc-600 dark:text-zinc-400">4500 AED</p>
+            </div>
+            <div className="bg-white dark:bg-zinc-800 rounded-lg p-4 hover:shadow-lg transition-shadow">
+              <img
+                src="/next.svg"
+                alt="Item"
+                className="h-24 w-24 object-cover mb-4 rounded"
+              />
+              <h3 className="text-sm font-medium text-zinc-900 dark:text-zinc-100">MacBook Pro M3</h3>
+              <p className="text-zinc-500 text-xs">London, UK</p>
+              <p className="font-bold text-zinc-600 dark:text-zinc-400">2800 GBP</p>
+            </div>
+            <div className="bg-white dark:bg-zinc-800 rounded-lg p-4 hover:shadow-lg transition-shadow">
+              <img
+                src="/next.svg"
+                alt="Item"
+                className="h-24 w-24 object-cover mb-4 rounded"
+              />
+              <h3 className="text-sm font-medium text-zinc-900 dark:text-zinc-100">DSLR Camera</h3>
+              <p className="text-zinc-500 text-xs">Bangkok, Thailand</p>
+              <p className="font-bold text-zinc-600 dark:text-zinc-400">1500 THB</p>
+            </div>
+            <div className="bg-white dark:bg-zinc-800 rounded-lg p-4 hover:shadow-lg transition-shadow">
+              <img
+                src="/next.svg"
+                alt="Item"
+                className="h-24 w-24 object-cover mb-4 rounded"
+              />
+              <h3 className="text-sm font-medium text-zinc-900 dark:text-zinc-100">Furniture Set</h3>
+              <p className="text-zinc-500 text-xs">Riyadh, Saudi Arabia</p>
+              <p className="font-bold text-zinc-600 dark:text-zinc-400">3000 SAR</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section className="py-16 px-6 bg-zinc-50 dark:bg-zinc-900">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl font-bold text-zinc-900 dark:text-zinc-100 mb-8 text-center">
+            Services Marketplace
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="bg-white dark:bg-zinc-800 rounded-xl p-6 text-center hover:shadow-lg transition-shadow">
+              <svg className="w-12 h-12 mx-auto mb-4 text-zinc-600 dark:text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path className="stroke-width-2" d="M12 1L3 5v6l4 3v12l8-5v3l8-5V16l-8-3V5L12 1z"/>
+              </svg>
+              <h3 className="text-xl font-medium text-zinc-900 dark:text-zinc-100 mb-4">Service Category</h3>
+              <ul className="text-zinc-500 text-xs space-y-2">
+                <li>Legal & Immigration</li>
+                <li>Financial & Tax</li>
+                <li>Education & Training</li>
+                <li>Health & Wellness</li>
+                <li>Transport & Travel</li>
+                <li>Home & Garden</li>
+              </ul>
+            </div>
+            <div className="bg-white dark:bg-zinc-800 rounded-xl p-6 text-center hover:shadow-lg transition-shadow">
+              <svg className="w-12 h-12 mx-auto mb-4 text-zinc-600 dark:text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path className="stroke-width-2" d="M12 1L3 5v6l4 3v12l8-5v3l8-5V16l-8-3V5L12 1z"/>
+              </svg>
+              <h3 className="text-xl font-medium text-zinc-900 dark:text-zinc-100 mb-4">Find Providers</h3>
+              <ul className="text-zinc-500 text-xs space-y-2">
+                <li>Verified professionals</li>
+                <li>8,500+ services</li>
+                <li>150+ countries</li>
+                <li>Read reviews</li>
+              </ul>
+            </div>
+            <div className="bg-white dark:bg-zinc-800 rounded-xl p-6 text-center hover:shadow-lg transition-shadow">
+              <svg className="w-12 h-12 mx-auto mb-4 text-zinc-600 dark:text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path className="stroke-width-2" d="M12 1L3 5v6l4 3v12l8-5v3l8-5V16l-8-3V5L12 1z"/>
+              </svg>
+              <h3 className="text-xl font-medium text-zinc-900 dark:text-zinc-100 mb-4">Post Your Service</h3>
+              <ul className="text-zinc-500 text-xs space-y-2">
+                <li>Free listings</li>
+                <li>Reach global audience</li>
+                <li>Easy setup</li>
+                <li>Get matched with clients</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Community / CTAs */}
+      <footer className="py-16 px-6 bg-zinc-950 dark:bg-zinc-950 text-center">
+        <div className="max-w-4xl mx-auto">
+          <h3 className="text-2xl font-bold text-zinc-100 dark:text-zinc-100 mb-6">
+            Join the Community
+          </h3>
+          <p className="text-zinc-400 dark:text-zinc-500 mb-8 max-w-2xl mx-auto">
+            Connect with 100,000+ expatriates worldwide. Share your experience, find opportunities, and build your international career.
           </p>
+          <div className="flex gap-4 justify-center sm:flex-col">
+            <a
+              href="https://linkedin.com/company/expatriates-com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-zinc-600 text-white px-8 py-3 rounded-full font-medium text-lg hover:bg-zinc-700 transition-colors"
+            >
+              LinkedIn
+            </a>
+            <a
+              href "/signup"
+              className="border-2 border-zinc-300 text-zinc-600 px-8 py-3 rounded-full font-medium text-lg hover:bg-zinc-50 transition-colors"
+            >
+              Sign Up Free
+            </a>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+      </footer>
     </div>
   );
 }
