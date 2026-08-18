@@ -54,7 +54,7 @@ export function Navbar() {
         <div className="flex items-center gap-6">
           <Link href="/" className="flex items-center gap-1 shrink-0">
             <img src="/faviconandheader.png" alt="ExpatConnect" className="w-[34px] h-[34px] rounded object-cover" />
-            <img src="/logoforheaderandfooter.png" alt="ExpatConnect" className={`h-[24px] object-contain hidden sm:block ${isDark ? "brightness-0 invert" : ""}`} />
+            <img src="/logoforheaderandfooter.png" alt="ExpatConnect" className={`h-[24px] object-contain hidden sm:block ${isDark ? "brightness-0 invert" : "brightness-0 invert"}`} />
           </Link>
 
           <div className="hidden md:flex items-center gap-1">

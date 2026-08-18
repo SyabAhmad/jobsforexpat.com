@@ -55,7 +55,7 @@ export function Footer() {
           <div className="col-span-2 sm:col-span-3 lg:col-span-1">
             <Link href="/" className="flex items-center gap-1 mb-3">
               <img src="/faviconandheader.png" alt="ExpatConnect" className="w-[28px] h-[28px] rounded object-cover" />
-              <img src="/logoforheaderandfooter.png" alt="ExpatConnect" className={`h-[20px] object-contain ${isDark ? "brightness-0 invert" : ""}`} />
+              <img src="/logoforheaderandfooter.png" alt="ExpatConnect" className="h-[20px] object-contain brightness-0 invert" />
             </Link>
             <p className="text-[12px] text-[#999] leading-relaxed">
               The global platform for expatriates. Jobs, housing, services, and community in 190+ countries.
