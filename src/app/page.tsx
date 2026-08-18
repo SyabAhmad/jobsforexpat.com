@@ -313,7 +313,7 @@ export default function Home() {
               LinkedIn
             </a>
             <a
-              href "/signup"
+              href="/signup"
               className="border-2 border-zinc-300 text-zinc-600 px-8 py-3 rounded-full font-medium text-lg hover:bg-zinc-50 transition-colors"
             >
               Sign Up Free
