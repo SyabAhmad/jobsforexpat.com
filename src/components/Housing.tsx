@@ -25,7 +25,7 @@ export function Housing() {
             {listings.map((listing) => (
               <Link
                 key={listing.id}
-                href={`/housing/${listing.id}`}
+                href="/housing"
                 className="p-4 hover:bg-[#f5f5f5] dark:hover:bg-[#2a2a2a] transition-colors"
               >
                 <div className="h-[120px] bg-[#f5f5f5] dark:bg-[#2d2d2d] rounded mb-3 flex items-center justify-center">

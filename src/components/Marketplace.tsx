@@ -27,7 +27,7 @@ export function Marketplace() {
             {items.map((item) => (
               <Link
                 key={item.id}
-                href={`/marketplace/${item.id}`}
+                href="/marketplace"
                 className="p-4 hover:bg-[#f5f5f5] dark:hover:bg-[#2a2a2a] transition-colors"
               >
                 <div className="h-[100px] bg-[#f5f5f5] dark:bg-[#2d2d2d] rounded mb-3 flex items-center justify-center">

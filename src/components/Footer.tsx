@@ -29,10 +29,10 @@ const columns = {
     { label: "List Service", href: "/post" },
   ],
   Company: [
-    { label: "About", href: "/about" },
-    { label: "Blog", href: "/blog" },
-    { label: "Careers", href: "/careers" },
-    { label: "Contact", href: "/contact" },
+    { label: "About", href: "/" },
+    { label: "Blog", href: "/" },
+    { label: "Careers", href: "/" },
+    { label: "Contact", href: "/" },
   ],
 };
 
@@ -83,9 +83,9 @@ export function Footer() {
 
         <div className="mt-8 pt-6 border-t border-[#e5e5e5] dark:border-[#333] flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex items-center gap-4">
-            <Link href="/privacy" className="text-[11px] text-[#999] hover:text-[#0a66c2] hover:underline">Privacy</Link>
-            <Link href="/terms" className="text-[11px] text-[#999] hover:text-[#0a66c2] hover:underline">Terms</Link>
-            <Link href="/accessibility" className="text-[11px] text-[#999] hover:text-[#0a66c2] hover:underline">Accessibility</Link>
+            <Link href="/" className="text-[11px] text-[#999] hover:text-[#0a66c2] hover:underline">Privacy</Link>
+            <Link href="/" className="text-[11px] text-[#999] hover:text-[#0a66c2] hover:underline">Terms</Link>
+            <Link href="/" className="text-[11px] text-[#999] hover:text-[#0a66c2] hover:underline">Accessibility</Link>
           </div>
           <div className="flex items-center gap-3">
             <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-[11px] text-[#999] hover:text-[#0a66c2]">Twitter</a>

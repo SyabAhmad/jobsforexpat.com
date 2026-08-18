@@ -27,7 +27,7 @@ export function Services() {
             {categories.map((cat) => (
               <Link
                 key={cat.title}
-                href={`/services/${cat.title.toLowerCase().replace(/ & /g, "-").replace(/ /g, "-")}`}
+                href="/services"
                 className="flex items-start gap-3 p-4 hover:bg-[#f5f5f5] dark:hover:bg-[#2a2a2a] transition-colors"
               >
                 <div className="w-[40px] h-[40px] bg-[#e5f0fb] dark:bg-[#0a66c2]/10 rounded flex items-center justify-center shrink-0">
