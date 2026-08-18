@@ -1,0 +1,22 @@
+* text=auto
+*.svg text
+*.png text
+*.jpg text
+*.gif text
+*.json text
+
+# Audio
+*.mp3 binary
+*.mp4 binary
+*.mov binary
+*.avi binary
+*.wav binary
+
+# Node modules
+/node_modules/
+/.next/
+/out/
+/build/
+
+# Tailwind
+*.css
